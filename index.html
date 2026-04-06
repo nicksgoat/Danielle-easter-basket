@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Easter, Danielle 🐣</title>
+
+  <!-- Fonts: Boska (display) + Nunito (body) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating petals / confetti layer -->
+  <div class="petals" aria-hidden="true" id="petals"></div>
+
+  <!-- Grass ground -->
+  <div class="ground" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C120,0 240,80 360,40 C480,0 600,80 720,40 C840,0 960,80 1080,40 C1200,0 1320,80 1440,40 L1440,120 L0,120 Z" fill="#7ecb5a"/>
+    </svg>
+    <!-- Grass blades -->
+    <div class="grass-strip"></div>
+  </div>
+
+  <main class="container">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="chick-icon" aria-hidden="true">🐥</div>
+      <h1 class="site-title">Happy Easter,<br><span class="name">Danielle</span> <span class="heart">♥</span></h1>
+      <p class="subtitle">Tap each egg to find your surprise inside!</p>
+    </header>
+
+    <!-- Basket scene -->
+    <section class="basket-scene" aria-label="Easter basket">
+
+      <!-- The basket SVG -->
+      <div class="basket-wrap" aria-hidden="true">
+        <svg class="basket-svg" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Basket body -->
+          <ellipse cx="160" cy="200" rx="140" ry="30" fill="#c8955c" opacity="0.4"/>
+          <path d="M30 120 Q30 230 160 230 Q290 230 290 120" fill="#d4a055"/>
+          <!-- Weave lines horizontal -->
+          <path d="M38 145 Q160 160 282 145" stroke="#b8863d" stroke-width="2.5" fill="none" opacity="0.7"/>
+          <path d="M34 168 Q160 183 286 168" stroke="#b8863d" stroke-width="2.5" fill="none" opacity="0.7"/>
+          <path d="M33 192 Q160 207 287 192" stroke="#b8863d" stroke-width="2.5" fill="none" opacity="0.7"/>
+          <!-- Weave lines vertical -->
+          <line x1="70" y1="123" x2="55" y2="228" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <line x1="100" y1="118" x2="90" y2="229" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <line x1="130" y1="116" x2="125" y2="230" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <line x1="160" y1="115" x2="160" y2="230" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <line x1="190" y1="116" x2="195" y2="230" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <line x1="220" y1="118" x2="230" y2="229" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <line x1="250" y1="123" x2="265" y2="228" stroke="#b8863d" stroke-width="2" opacity="0.5"/>
+          <!-- Basket rim -->
+          <ellipse cx="160" cy="120" rx="130" ry="22" fill="#e0b06a"/>
+          <ellipse cx="160" cy="120" rx="130" ry="22" fill="none" stroke="#c08040" stroke-width="3"/>
+          <!-- Handle -->
+          <path d="M80 118 Q80 50 160 50 Q240 50 240 118" stroke="#c08040" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M80 118 Q80 50 160 50 Q240 50 240 118" stroke="#e8c07a" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Ribbon on handle -->
+          <path d="M145 54 Q160 64 175 54" stroke="#f472b6" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- Easter grass inside basket -->
+          <ellipse cx="160" cy="118" rx="124" ry="18" fill="#a8e063" opacity="0.85"/>
+          <!-- Grass tufts -->
+          <path d="M60 112 Q65 95 70 112" stroke="#5db832" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M75 110 Q80 90 85 110" stroke="#4da828" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M220 112 Q225 92 230 112" stroke="#5db832" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M235 110 Q240 88 245 110" stroke="#4da828" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M150 110 Q155 93 160 110" stroke="#5db832" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Eggs row inside basket -->
+      <div class="eggs-in-basket">
+        <div class="egg-wrap" data-egg="1">
+          <div class="egg" tabindex="0" role="button" aria-label="Easter egg 1 — tap to open">
+            <div class="egg-top">
+              <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 30 Q5 0 40 0 Q75 0 75 30" fill="#f9a8d4"/>
+                <path d="M10 30 Q10 5 40 5 Q70 5 70 30" fill="none" stroke="#f472b6" stroke-width="1.5" opacity="0.4"/>
+                <!-- Dots pattern -->
+                <circle cx="20" cy="15" r="3" fill="#fff" opacity="0.7"/>
+                <circle cx="40" cy="10" r="3" fill="#fff" opacity="0.7"/>
+                <circle cx="60" cy="15" r="3" fill="#fff" opacity="0.7"/>
+                <circle cx="30" cy="22" r="2.5" fill="#fff" opacity="0.5"/>
+                <circle cx="50" cy="22" r="2.5" fill="#fff" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="egg-bottom">
+              <svg viewBox="0 0 80 65" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 0 Q5 65 40 65 Q75 65 75 0" fill="#f9a8d4"/>
+                <path d="M10 0 Q10 60 40 60 Q70 60 70 0" fill="none" stroke="#f472b6" stroke-width="1.5" opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="egg-crack-line" aria-hidden="true"></div>
+          </div>
+          <div class="egg-message" role="dialog" aria-modal="true" aria-label="Message from Nick">
+            <button class="close-btn" aria-label="Close message">✕</button>
+            <div class="message-emoji">💕</div>
+            <p class="message-text">You're cuter than anything I could've found for a real basket, so the pink egg is you.</p>
+          </div>
+        </div>
+
+        <div class="egg-wrap" data-egg="2">
+          <div class="egg" tabindex="0" role="button" aria-label="Easter egg 2 — tap to open">
+            <div class="egg-top">
+              <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 30 Q5 0 40 0 Q75 0 75 30" fill="#86efac"/>
+                <path d="M15 30 L65 30" stroke="#fff" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" opacity="0.5"/>
+                <path d="M12 22 L68 22" stroke="#fff" stroke-width="2" stroke-dasharray="4 5" stroke-linecap="round" opacity="0.35"/>
+                <path d="M18 14 L62 14" stroke="#fff" stroke-width="2" stroke-dasharray="4 5" stroke-linecap="round" opacity="0.25"/>
+              </svg>
+            </div>
+            <div class="egg-bottom">
+              <svg viewBox="0 0 80 65" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 0 Q5 65 40 65 Q75 65 75 0" fill="#86efac"/>
+                <path d="M15 0 L15 30 Q15 60 40 62 Q65 60 65 30 L65 0" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="5 5" opacity="0.35"/>
+              </svg>
+            </div>
+            <div class="egg-crack-line" aria-hidden="true"></div>
+          </div>
+          <div class="egg-message" role="dialog" aria-modal="true" aria-label="Message from Nick">
+            <button class="close-btn" aria-label="Close message">✕</button>
+            <div class="message-emoji">🌸</div>
+            <p class="message-text">Your favorite color so it's only right how this is where I say you are my favorite.</p>
+          </div>
+        </div>
+
+        <div class="egg-wrap" data-egg="3">
+          <div class="egg" tabindex="0" role="button" aria-label="Easter egg 3 — tap to open">
+            <div class="egg-top">
+              <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 30 Q5 0 40 0 Q75 0 75 30" fill="#c4b5fd"/>
+                <!-- Zigzag -->
+                <polyline points="8,20 18,10 28,20 38,10 48,20 58,10 68,20 72,20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+                <polyline points="10,28 20,18 30,28 40,18 50,28 60,18 70,28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="egg-bottom">
+              <svg viewBox="0 0 80 65" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 0 Q5 65 40 65 Q75 65 75 0" fill="#c4b5fd"/>
+                <polyline points="8,8 18,18 28,8 38,18 48,8 58,18 68,8" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="egg-crack-line" aria-hidden="true"></div>
+          </div>
+          <div class="egg-message" role="dialog" aria-modal="true" aria-label="Message from Nick">
+            <button class="close-btn" aria-label="Close message">✕</button>
+            <div class="message-emoji">🍫</div>
+            <p class="message-text">This basket may be missing real salted 80% dark chocolate but I hope it has all the sweetness you deserve. (IOU one real basket, Danielle Day coming soon 🤝)</p>
+          </div>
+        </div>
+
+        <div class="egg-wrap" data-egg="4">
+          <div class="egg" tabindex="0" role="button" aria-label="Easter egg 4 — tap to open">
+            <div class="egg-top">
+              <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 30 Q5 0 40 0 Q75 0 75 30" fill="#fde68a"/>
+                <!-- Stars -->
+                <text x="18" y="25" font-size="13" fill="#fff" opacity="0.75">✦</text>
+                <text x="36" y="18" font-size="10" fill="#fff" opacity="0.6">✦</text>
+                <text x="52" y="26" font-size="14" fill="#fff" opacity="0.75">✦</text>
+              </svg>
+            </div>
+            <div class="egg-bottom">
+              <svg viewBox="0 0 80 65" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 0 Q5 65 40 65 Q75 65 75 0" fill="#fde68a"/>
+                <text x="28" y="38" font-size="12" fill="#fff" opacity="0.55">✦</text>
+                <text x="48" y="25" font-size="9" fill="#fff" opacity="0.4">✦</text>
+              </svg>
+            </div>
+            <div class="egg-crack-line" aria-hidden="true"></div>
+          </div>
+          <div class="egg-message" role="dialog" aria-modal="true" aria-label="Message from Nick">
+            <button class="close-btn" aria-label="Close message">✕</button>
+            <div class="message-emoji">☀️</div>
+            <p class="message-text">Yellow for the sun because it's your favorite thing, and every morning when it comes up you're my favorite thing to see.</p>
+          </div>
+        </div>
+
+        <div class="egg-wrap" data-egg="5">
+          <div class="egg" tabindex="0" role="button" aria-label="Easter egg 5 — tap to open">
+            <div class="egg-top">
+              <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 30 Q5 0 40 0 Q75 0 75 30" fill="#fb923c"/>
+                <!-- Wavy lines -->
+                <path d="M10 20 Q20 14 30 20 Q40 26 50 20 Q60 14 70 20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+                <path d="M10 28 Q20 22 30 28 Q40 34 50 28 Q60 22 70 28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+              </svg>
+            </div>
+            <div class="egg-bottom">
+              <svg viewBox="0 0 80 65" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 0 Q5 65 40 65 Q75 65 75 0" fill="#fb923c"/>
+                <path d="M10 15 Q20 9 30 15 Q40 21 50 15 Q60 9 70 15" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="egg-crack-line" aria-hidden="true"></div>
+          </div>
+          <div class="egg-message" role="dialog" aria-modal="true" aria-label="Message from Nick">
+            <button class="close-btn" aria-label="Close message">✕</button>
+            <div class="message-emoji">🦇</div>
+            <p class="message-text">The color of Valencia, currently the number one city in the world (since you're there), I'll be visiting soon.</p>
+          </div>
+        </div>
+
+        <div class="egg-wrap" data-egg="6">
+          <div class="egg" tabindex="0" role="button" aria-label="Easter egg 6 — tap to open">
+            <div class="egg-top">
+              <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 30 Q5 0 40 0 Q75 0 75 30" fill="#67e8f9"/>
+                <!-- Hearts -->
+                <text x="15" y="26" font-size="13" fill="#fff" opacity="0.7">♥</text>
+                <text x="34" y="20" font-size="10" fill="#fff" opacity="0.55">♥</text>
+                <text x="51" y="27" font-size="14" fill="#fff" opacity="0.7">♥</text>
+              </svg>
+            </div>
+            <div class="egg-bottom">
+              <svg viewBox="0 0 80 65" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 0 Q5 65 40 65 Q75 65 75 0" fill="#67e8f9"/>
+                <text x="30" y="38" font-size="11" fill="#fff" opacity="0.5">♥</text>
+              </svg>
+            </div>
+            <div class="egg-crack-line" aria-hidden="true"></div>
+          </div>
+          <div class="egg-message" role="dialog" aria-modal="true" aria-label="Message from Nick">
+            <button class="close-btn" aria-label="Close message">✕</button>
+            <div class="message-emoji">💙</div>
+            <p class="message-text">Since I couldn't give you a real basket, I made you this one, because you deserve something made just for you.</p>
+          </div>
+        </div>
+
+      </div><!-- /eggs-in-basket -->
+
+    </section><!-- /basket-scene -->
+
+    <!-- All opened CTA -->
+    <div class="all-opened" id="allOpened" aria-live="polite" hidden>
+      <div class="all-opened-inner">
+        <div class="party">🎉</div>
+        <h2>You found them all!</h2>
+        <p>You have earned a discount code! Use code <strong class="promo-code">HOPPY</strong> at checkout for a FREE 1 hour massage from Nicholas.</p>
+        <button class="reset-btn" id="checkoutBtn" style="background: #a78bfa; margin-top: 0;">Redeem massage →</button>
+        <button class="reset-btn" id="resetBtn">Reset basket</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Overlay for egg messages on mobile -->
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Massage checkout">
+    <div class="checkout-inner">
+
+      <!-- Step indicator -->
+      <div class="step-indicator" id="stepIndicator">
+        <div class="step-dot active" id="dot1"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="dot3"></div>
+      </div>
+
+      <!-- Step 1: Code entry -->
+      <div class="checkout-step" id="step1">
+        <button class="close-btn checkout-close" id="checkoutClose" aria-label="Close">✕</button>
+        <div class="checkout-icon">💆‍♀️</div>
+        <h2 class="checkout-title">Redeem Your Massage</h2>
+
+        <!-- Price display -->
+        <div class="price-display">
+          <div class="price-original" id="priceOriginal">$1,000,000.00</div>
+          <div class="price-saving" id="priceSaving" hidden>
+            <span class="price-strike">$1,000,000.00</span>
+            <span class="price-free">FREE 💕</span>
+          </div>
+        </div>
+
+        <div class="code-field">
+          <label for="promoInput" class="code-label">Promo Code</label>
+          <div class="code-input-wrap">
+            <input id="promoInput" type="text" class="code-input" placeholder="Enter code" autocomplete="off" spellcheck="false" />
+            <button class="apply-btn" id="applyBtn">Apply</button>
+          </div>
+          <p class="code-error" id="codeError" aria-live="polite"></p>
+        </div>
+        <p class="checkout-hint">Hint: it rhymes with floppy 🐰</p>
+      </div>
+
+      <!-- Step 2: Booking details -->
+      <div class="checkout-step" id="step2" hidden>
+        <button class="close-btn checkout-close" id="checkoutClose2" aria-label="Close">✕</button>
+        <div class="checkout-icon">✅</div>
+        <h2 class="checkout-title">Code Applied!</h2>
+        <p class="checkout-sub">Choose your preferred massage time:</p>
+        <div class="time-options">
+          <label class="time-option">
+            <input type="radio" name="massageTime" value="morning" /> Morning (10am – 12pm)
+          </label>
+          <label class="time-option">
+            <input type="radio" name="massageTime" value="afternoon" /> Afternoon (2pm – 4pm)
+          </label>
+          <label class="time-option">
+            <input type="radio" name="massageTime" value="evening" /> Evening (6pm – 8pm)
+          </label>
+          <label class="time-option">
+            <input type="radio" name="massageTime" value="surprise" /> Surprise me 🎲
+          </label>
+        </div>
+        <button class="reset-btn" id="bookBtn" style="width:100%; margin-top: var(--space-4);">Book my massage →</button>
+      </div>
+
+      <!-- Step 3: Confirmation -->
+      <div class="checkout-step" id="step3" hidden>
+        <div class="checkout-icon" style="font-size:2.5rem;">🎀</div>
+        <h2 class="checkout-title">You're all booked!</h2>
+        <div class="receipt">
+          <div class="receipt-row"><span>Service</span><span>1hr Massage</span></div>
+          <div class="receipt-row"><span>Provider</span><span>Nicholas</span></div>
+          <div class="receipt-row"><span>Code</span><span class="promo-code">HOPPY</span></div>
+          <div class="receipt-row"><span>Original price</span><span class="price-strike" style="font-size:var(--text-sm);">$1,000,000</span></div>
+          <div class="receipt-row receipt-total"><span>Total</span><span>$0.00 💕</span></div>
+        </div>
+        <p class="checkout-sub" style="margin-top:var(--space-2);">Your coupon is ready — tap below to save or share it!</p>
+        <div id="couponWrap" hidden style="width:100%; margin-top:var(--space-3);"></div>
+        <button class="reset-btn" id="downloadBtn" hidden style="background:#7c3aed; width:100%; margin-top:var(--space-3);">⬇ Save coupon image</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
