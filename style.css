@@ -207,35 +207,34 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 /* ---- Willow Trees ---- */
 .willow {
   position: absolute;
-  bottom: 60px;
-  width: clamp(130px, 16vw, 220px);
+  bottom: 55px;
+  width: clamp(160px, 18vw, 260px);
   height: auto;
   overflow: visible;
 }
-.willow-left  { left:  -2vw; }
-.willow-right { right: -2vw; transform: scaleX(-1); }
+.willow-left  { left:  -1vw; }
+.willow-right { right: -1vw; transform: scaleX(-1); }
 
-/* Frond sway */
+/* Frond sway — each frond rocks from its top anchor */
 .frond {
+  transform-box: fill-box;
   transform-origin: top center;
-  animation: frondSway 3.5s ease-in-out infinite;
+  animation: frondSway 3.8s ease-in-out infinite;
 }
-.willow svg .frond:nth-child(odd)  { animation-duration: 3.2s; }
-.willow svg .frond:nth-child(even) { animation-duration: 4.1s; animation-direction: alternate-reverse; }
-
-/* Target fronds inside each willow */
-.willow .frond:nth-child(1) { animation-delay: 0s; }
-.willow .frond:nth-child(2) { animation-delay: 0.3s; }
-.willow .frond:nth-child(3) { animation-delay: 0.6s; }
-.willow .frond:nth-child(4) { animation-delay: 0.9s; }
-.willow .frond:nth-child(5) { animation-delay: 1.2s; }
-.willow .frond:nth-child(6) { animation-delay: 0.15s; }
-.willow .frond:nth-child(7) { animation-delay: 0.75s; }
+.willow .frond:nth-child(1)  { animation-delay: 0s;    animation-duration: 3.6s; }
+.willow .frond:nth-child(2)  { animation-delay: 0.2s;  animation-duration: 4.2s; animation-direction: alternate-reverse; }
+.willow .frond:nth-child(3)  { animation-delay: 0.5s;  animation-duration: 3.4s; }
+.willow .frond:nth-child(4)  { animation-delay: 0.8s;  animation-duration: 4.5s; animation-direction: alternate-reverse; }
+.willow .frond:nth-child(5)  { animation-delay: 0.1s;  animation-duration: 3.9s; }
+.willow .frond:nth-child(6)  { animation-delay: 0.6s;  animation-duration: 4.1s; animation-direction: alternate-reverse; }
+.willow .frond:nth-child(7)  { animation-delay: 0.3s;  animation-duration: 3.7s; }
+.willow .frond:nth-child(8)  { animation-delay: 0.9s;  animation-duration: 4.3s; animation-direction: alternate-reverse; }
+.willow .frond:nth-child(9)  { animation-delay: 0.4s;  animation-duration: 3.5s; }
+.willow .frond:nth-child(10) { animation-delay: 0.7s;  animation-duration: 4.0s; animation-direction: alternate-reverse; }
 
 @keyframes frondSway {
-  0%,100% { transform: skewX(0deg) translateX(0); }
-  33%     { transform: skewX(6deg) translateX(4px); }
-  66%     { transform: skewX(-4deg) translateX(-3px); }
+  0%,100% { transform: rotate(-5deg); }
+  50%     { transform: rotate(5deg); }
 }
 
 /* ---- Ground / Grass ---- */
@@ -264,12 +263,15 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   margin-top: -2px;
 }
 
-/* Mobile grass/willow tweaks */
+/* Mobile scene tweaks */
 @media (max-width: 640px) {
-  .willow { width: clamp(90px, 22vw, 150px); bottom: 50px; }
-  .sun-wrap { width: 64px; height: 64px; }
-  .sun { width: 48px; height: 48px; }
-  .sun-rays { width: 64px; height: 64px; }
+  .willow { width: clamp(100px, 26vw, 160px); bottom: 48px; }
+  .sun-wrap { width: 60px; height: 60px; top: 20px; right: 20px; }
+  .sun { width: 44px; height: 44px; }
+  .sun-rays { width: 60px; height: 60px; }
+  .cloud-1 { width: 90px; height: 26px; }
+  .cloud-2 { width: 70px; }
+  .cloud-3 { display: none; }
 }
 
 /* ============================================================
@@ -869,34 +871,46 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
    Responsive tweaks
    ============================================================ */
 
-/* Tablet */
+/* ── Tablet ── */
 @media (max-width: 640px) {
   .container {
-    padding: var(--space-8) var(--space-4) 140px;
-    gap: var(--space-6);
+    padding: var(--space-6) var(--space-3) 160px;
+    gap: var(--space-4);
   }
   .site-title { font-size: clamp(2rem, 10vw, 3rem); }
-  .basket-wrap { width: min(260px, 78vw); }
+  .basket-wrap { width: min(240px, 64vw); margin-bottom: -18px; }
   .eggs-in-basket {
-    gap: var(--space-3);
+    gap: var(--space-3) var(--space-4);
     padding: var(--space-2);
+    /* Force 3 per row so 6 eggs = 2 clean rows */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    width: min(320px, 88vw);
   }
-  .egg { width: clamp(58px, 15vw, 78px); }
+  .egg { width: clamp(68px, 18vw, 88px); }
 }
 
-/* Mobile */
-@media (max-width: 420px) {
-  .container { padding: var(--space-6) var(--space-3) 130px; }
+/* ── Mobile ── */
+@media (max-width: 430px) {
+  .container { padding: var(--space-5) var(--space-3) 150px; gap: var(--space-3); }
   .chick-icon { font-size: 2rem; }
-  .site-title { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+  .site-title { font-size: clamp(1.9rem, 9.5vw, 2.5rem); }
   .subtitle { font-size: var(--text-sm); }
-  .basket-wrap { width: min(220px, 70vw); margin-bottom: -16px; }
-  .eggs-in-basket { gap: var(--space-2); }
-  .egg { width: clamp(52px, 14vw, 68px); }
+  .basket-wrap { width: min(200px, 58vw); margin-bottom: -14px; }
+  .eggs-in-basket {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: var(--space-2) var(--space-3);
+    width: min(300px, 90vw);
+    padding: var(--space-1);
+  }
+  .egg { width: clamp(62px, 17vw, 80px); }
 
-  /* Checkout modal full-screen on small phones */
+  /* Checkout */
   .checkout-inner {
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-5) var(--space-4);
     width: min(380px, 96vw);
     max-height: 90dvh;
     overflow-y: auto;
@@ -905,15 +919,10 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   .time-option { padding: var(--space-2) var(--space-3); font-size: var(--text-xs); }
   .receipt-row { font-size: var(--text-xs); padding: var(--space-2) var(--space-3); }
   .code-input { font-size: var(--text-sm); }
+  .price-original { font-size: 1.5rem; }
 
-  /* All-opened banner */
-  .all-opened-inner {
-    padding: var(--space-6) var(--space-5);
-  }
+  /* Completion banner */
+  .all-opened-inner { padding: var(--space-5) var(--space-4); }
   .all-opened h2 { font-size: var(--text-lg); }
   .all-opened p  { font-size: var(--text-sm); }
-
-  /* Ground grass height */
-  .ground svg { height: 56px; }
-  .grass-strip { height: 44px; }
 }
