@@ -693,43 +693,56 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 
 /* ============================================================
-   Checkout Modal
+   Checkout Modal — full-screen step-by-step
    ============================================================ */
 .checkout-modal {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 200;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-4);
   background: transparent;
+  overflow: hidden;
 }
 .checkout-modal.open {
+  display: block;
+}
+
+/* Each step fills the full screen */
+.checkout-step {
+  position: absolute;
+  inset: 0;
   display: flex;
-  animation: fadeIn 0.2s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-6);
+  background: linear-gradient(160deg, #fce7f3 0%, #fef9c3 40%, #dcfce7 100%);
+  overflow-y: auto;
+  /* Slide-in animation */
+  animation: stepIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.checkout-step[hidden] {
+  display: none;
 }
-.checkout-inner {
+@keyframes stepIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Card container within each step */
+.checkout-card {
   background: var(--color-surface);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
   width: min(460px, 94vw);
-  max-height: 92dvh;
-  overflow-y: auto;
-  box-shadow: 0 24px 64px oklch(0.2 0.08 0 / 0.3);
+  box-shadow: 0 24px 64px oklch(0.2 0.08 0 / 0.22);
   border: 2px solid #fce7f3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
   position: relative;
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@keyframes slideUp {
-  from { transform: translateY(24px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
-}
-.checkout-step { display: flex; flex-direction: column; gap: var(--space-4); }
 .checkout-close {
   position: absolute;
   top: var(--space-3);
@@ -909,12 +922,6 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   .egg { width: clamp(62px, 17vw, 80px); }
 
   /* Checkout */
-  .checkout-inner {
-    padding: var(--space-5) var(--space-4);
-    width: min(380px, 96vw);
-    max-height: 90dvh;
-    overflow-y: auto;
-  }
   .checkout-title { font-size: var(--text-lg); }
   .time-option { padding: var(--space-2) var(--space-3); font-size: var(--text-xs); }
   .receipt-row { font-size: var(--text-xs); padding: var(--space-2) var(--space-3); }

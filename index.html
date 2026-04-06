@@ -337,26 +337,22 @@
   <!-- Overlay for egg messages on mobile -->
   <div class="overlay" id="overlay" aria-hidden="true"></div>
 
-  <!-- Checkout Modal -->
+  <!-- Checkout Modal — full screen, step by step -->
   <div class="checkout-modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Massage checkout">
-    <div class="checkout-inner">
 
-      <!-- Step indicator -->
-      <div class="step-indicator" id="stepIndicator">
+    <!-- Step 1: Code entry -->
+    <div class="checkout-step" id="step1">
+      <div class="step-indicator">
         <div class="step-dot active" id="dot1"></div>
-        <div class="step-line"></div>
+        <div class="step-line" id="line1"></div>
         <div class="step-dot" id="dot2"></div>
-        <div class="step-line"></div>
+        <div class="step-line" id="line2"></div>
         <div class="step-dot" id="dot3"></div>
       </div>
-
-      <!-- Step 1: Code entry -->
-      <div class="checkout-step" id="step1">
+      <div class="checkout-card">
         <button class="close-btn checkout-close" id="checkoutClose" aria-label="Close">✕</button>
         <div class="checkout-icon">💆‍♀️</div>
         <h2 class="checkout-title">Redeem Your Massage</h2>
-
-        <!-- Price display -->
         <div class="price-display">
           <div class="price-original" id="priceOriginal">$1,000,000.00</div>
           <div class="price-saving" id="priceSaving" hidden>
@@ -364,7 +360,6 @@
             <span class="price-free">FREE 💕</span>
           </div>
         </div>
-
         <div class="code-field">
           <label for="promoInput" class="code-label">Promo Code</label>
           <div class="code-input-wrap">
@@ -375,32 +370,42 @@
         </div>
         <p class="checkout-hint">Hint: it rhymes with floppy 🐰</p>
       </div>
+    </div>
 
-      <!-- Step 2: Booking details -->
-      <div class="checkout-step" id="step2" hidden>
+    <!-- Step 2: Time selection -->
+    <div class="checkout-step" id="step2" hidden>
+      <div class="step-indicator">
+        <div class="step-dot done"></div>
+        <div class="step-line done"></div>
+        <div class="step-dot active"></div>
+        <div class="step-line"></div>
+        <div class="step-dot"></div>
+      </div>
+      <div class="checkout-card">
         <button class="close-btn checkout-close" id="checkoutClose2" aria-label="Close">✕</button>
         <div class="checkout-icon">✅</div>
         <h2 class="checkout-title">Code Applied!</h2>
         <p class="checkout-sub">Choose your preferred massage time:</p>
         <div class="time-options">
-          <label class="time-option">
-            <input type="radio" name="massageTime" value="morning" /> Morning (10am – 12pm)
-          </label>
-          <label class="time-option">
-            <input type="radio" name="massageTime" value="afternoon" /> Afternoon (2pm – 4pm)
-          </label>
-          <label class="time-option">
-            <input type="radio" name="massageTime" value="evening" /> Evening (6pm – 8pm)
-          </label>
-          <label class="time-option">
-            <input type="radio" name="massageTime" value="surprise" /> Surprise me 🎲
-          </label>
+          <label class="time-option"><input type="radio" name="massageTime" value="morning" /> Morning (10am – 12pm)</label>
+          <label class="time-option"><input type="radio" name="massageTime" value="afternoon" /> Afternoon (2pm – 4pm)</label>
+          <label class="time-option"><input type="radio" name="massageTime" value="evening" /> Evening (6pm – 8pm)</label>
+          <label class="time-option"><input type="radio" name="massageTime" value="surprise" /> Surprise me 🎲</label>
         </div>
-        <button class="reset-btn" id="bookBtn" style="width:100%; margin-top: var(--space-4);">Book my massage →</button>
+        <button class="reset-btn" id="bookBtn" style="width:100%;">Book my massage →</button>
       </div>
+    </div>
 
-      <!-- Step 3: Confirmation -->
-      <div class="checkout-step" id="step3" hidden>
+    <!-- Step 3: Confirmation + coupon -->
+    <div class="checkout-step" id="step3" hidden>
+      <div class="step-indicator">
+        <div class="step-dot done"></div>
+        <div class="step-line done"></div>
+        <div class="step-dot done"></div>
+        <div class="step-line done"></div>
+        <div class="step-dot active"></div>
+      </div>
+      <div class="checkout-card">
         <div class="checkout-icon" style="font-size:2.5rem;">🎀</div>
         <h2 class="checkout-title">You're all booked!</h2>
         <div class="receipt">
@@ -410,12 +415,12 @@
           <div class="receipt-row"><span>Original price</span><span class="price-strike" style="font-size:var(--text-sm);">$1,000,000</span></div>
           <div class="receipt-row receipt-total"><span>Total</span><span>$0.00 💕</span></div>
         </div>
-        <p class="checkout-sub" style="margin-top:var(--space-2);">Your coupon is ready — tap below to save or share it!</p>
-        <div id="couponWrap" hidden style="width:100%; margin-top:var(--space-3);"></div>
-        <button class="reset-btn" id="downloadBtn" hidden style="background:#7c3aed; width:100%; margin-top:var(--space-3);">⬇ Save coupon image</button>
+        <p class="checkout-sub">Your coupon is ready — tap below to save or share it!</p>
+        <div id="couponWrap" hidden style="width:100%;"></div>
+        <button class="reset-btn" id="downloadBtn" hidden style="background:#7c3aed; width:100%;">⬇ Save coupon image</button>
       </div>
-
     </div>
+
   </div>
 
   <script src="app.js"></script>

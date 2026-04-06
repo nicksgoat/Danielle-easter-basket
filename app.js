@@ -175,22 +175,11 @@
   const couponWrap = document.getElementById('couponWrap');
   const downloadBtn = document.getElementById('downloadBtn');
 
-  const dot1 = document.getElementById('dot1');
-  const dot2 = document.getElementById('dot2');
-  const dot3 = document.getElementById('dot3');
-  const stepLines = document.querySelectorAll('.step-line');
   const priceOriginal = document.getElementById('priceOriginal');
   const priceSaving   = document.getElementById('priceSaving');
 
   function setStep(n) {
-    [dot1, dot2, dot3].forEach((d, i) => {
-      d.classList.remove('active', 'done');
-      if (i + 1 < n)  d.classList.add('done');
-      if (i + 1 === n) d.classList.add('active');
-    });
-    stepLines.forEach((l, i) => {
-      l.classList.toggle('done', i + 1 < n);
-    });
+    // Step indicator dots are now static per-step HTML, nothing to update dynamically
   }
 
   function openCheckout() {
@@ -260,14 +249,11 @@
     step2.hidden = true;
     step3.hidden = false;
     setStep(3);
-    burstConfetti(document.querySelector('.checkout-inner'));
-    // Scroll to top first so she sees the booked header
-    document.querySelector('.checkout-inner').scrollTo({ top: 0, behavior: 'smooth' });
-    // Draw coupon, then scroll to it and auto-download
+    // Burst confetti from the step3 card
+    burstConfetti(document.querySelector('#step3 .checkout-card') || step3);
+    // Draw coupon and auto-download
     setTimeout(() => {
       drawCoupon(selected.value, () => {
-        // Scroll down to coupon
-        document.querySelector('.checkout-inner').scrollTo({ top: 9999, behavior: 'smooth' });
         // Auto-trigger download after a beat
         setTimeout(() => downloadBtn.click(), 600);
       });
