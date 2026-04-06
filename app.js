@@ -151,6 +151,8 @@
       eggEl.offsetHeight; // force reflow
       eggEl.style.animation = '';
       eggEl.style.opacity = '1';
+      const shellEl = wrap.querySelector('.egg-shell');
+      if (shellEl) { shellEl.style.animation = 'none'; shellEl.offsetHeight; shellEl.style.animation = ''; }
     });
     openCount = 0;
     activeWrap = null;
