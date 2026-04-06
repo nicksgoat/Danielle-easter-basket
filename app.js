@@ -146,11 +146,11 @@
     eggWraps.forEach(wrap => {
       wrap.classList.remove('opened');
       wrap.querySelector('.egg-message').classList.remove('visible');
-      const top = wrap.querySelector('.egg-top');
-      const bot = wrap.querySelector('.egg-bottom');
-      top.style.animation = 'none'; bot.style.animation = 'none';
-      top.offsetHeight; bot.offsetHeight;
-      top.style.animation = ''; bot.style.animation = '';
+      const eggEl = wrap.querySelector('.egg');
+      eggEl.style.animation = 'none';
+      eggEl.offsetHeight; // force reflow
+      eggEl.style.animation = '';
+      eggEl.style.opacity = '1';
     });
     openCount = 0;
     activeWrap = null;

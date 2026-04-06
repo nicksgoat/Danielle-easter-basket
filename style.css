@@ -400,47 +400,26 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .egg:active { transform: scale(0.95); }
 
-.egg-top, .egg-bottom { display: block; }
-.egg-top svg, .egg-bottom svg { width: 100%; height: auto; }
-
-/* Crack line between top & bottom */
-.egg-crack-line {
-  position: absolute;
-  top: 45%;
-  left: 0; right: 0;
-  height: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.egg-crack-line::before {
-  content: '';
+/* Unified single-SVG egg */
+.egg-svg {
+  width: 100%;
+  height: auto;
   display: block;
-  height: 3px;
-  background: rgba(255,255,255,0.6);
-  border-radius: var(--radius-full);
-  margin: 0 6px;
 }
 
-/* Opened egg state */
-.egg-wrap.opened .egg-top {
-  animation: eggTopOpen var(--transition-slow) forwards;
-}
-.egg-wrap.opened .egg-bottom {
-  animation: eggBottomDrop 0.4s 0.15s forwards;
-}
+/* Opened egg state — whole egg bounces and fades */
 .egg-wrap.opened .egg {
   cursor: default;
   transform: none !important;
   pointer-events: none;
+  animation: eggOpen 0.5s forwards;
 }
 
-@keyframes eggTopOpen {
-  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(-50px) rotate(-20deg); opacity: 0; }
-}
-@keyframes eggBottomDrop {
-  0%   { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(8px); opacity: 0.6; }
+@keyframes eggOpen {
+  0%   { transform: scale(1); opacity: 1; }
+  30%  { transform: scale(1.15) rotate(-8deg); opacity: 1; }
+  60%  { transform: scale(0.9) rotate(5deg); opacity: 0.7; }
+  100% { transform: scale(0.75) translateY(10px); opacity: 0; }
 }
 
 /* ============================================================
