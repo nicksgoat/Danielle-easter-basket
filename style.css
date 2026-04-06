@@ -92,24 +92,184 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 
 /* ============================================================
-   Ground / Grass
+   Scene (fixed background layer)
    ============================================================ */
-.ground {
+.scene {
   position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ---- Sun ---- */
+.sun-wrap {
+  position: absolute;
+  top: clamp(30px, 6vh, 70px);
+  right: clamp(40px, 8vw, 120px);
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sun {
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #ffe566, #ffb800);
+  box-shadow: 0 0 0 8px rgba(255,210,0,0.18), 0 0 40px 12px rgba(255,200,0,0.22);
+  z-index: 1;
+  animation: sunPulse 4s ease-in-out infinite;
+}
+@keyframes sunPulse {
+  0%,100% { box-shadow: 0 0 0 8px rgba(255,210,0,0.18), 0 0 40px 12px rgba(255,200,0,0.22); }
+  50%      { box-shadow: 0 0 0 14px rgba(255,210,0,0.14), 0 0 60px 20px rgba(255,200,0,0.28); }
+}
+.sun-rays {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: transparent;
+  animation: rotateSun 18s linear infinite;
+}
+.sun-rays::before,
+.sun-rays::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    rgba(255,210,0,0.35) 0deg 12deg,
+    transparent 12deg 30deg
+  );
+}
+.sun-rays::after {
+  transform: rotate(15deg);
+  background: repeating-conic-gradient(
+    rgba(255,220,60,0.2) 0deg 10deg,
+    transparent 10deg 30deg
+  );
+}
+@keyframes rotateSun {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ---- Clouds ---- */
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50px;
+  opacity: 0.82;
+  filter: blur(0px);
+}
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+.cloud-1 {
+  width: 130px; height: 38px;
+  top: 10%; left: 8%;
+  animation: driftCloud 28s linear infinite;
+}
+.cloud-1::before { width: 60px; height: 55px; top: -28px; left: 18px; }
+.cloud-1::after  { width: 45px; height: 40px; top: -20px; left: 58px; }
+
+.cloud-2 {
+  width: 100px; height: 30px;
+  top: 7%; left: 40%;
+  animation: driftCloud 38s linear infinite;
+  opacity: 0.65;
+}
+.cloud-2::before { width: 48px; height: 44px; top: -24px; left: 14px; }
+.cloud-2::after  { width: 36px; height: 32px; top: -16px; left: 46px; }
+
+.cloud-3 {
+  width: 150px; height: 42px;
+  top: 14%; left: -10%;
+  animation: driftCloud 48s linear infinite;
+  opacity: 0.55;
+}
+.cloud-3::before { width: 70px; height: 60px; top: -32px; left: 20px; }
+.cloud-3::after  { width: 54px; height: 46px; top: -22px; left: 68px; }
+
+@keyframes driftCloud {
+  from { transform: translateX(0); }
+  to   { transform: translateX(110vw); }
+}
+
+/* ---- Willow Trees ---- */
+.willow {
+  position: absolute;
+  bottom: 60px;
+  width: clamp(130px, 16vw, 220px);
+  height: auto;
+  overflow: visible;
+}
+.willow-left  { left:  -2vw; }
+.willow-right { right: -2vw; transform: scaleX(-1); }
+
+/* Frond sway */
+.frond {
+  transform-origin: top center;
+  animation: frondSway 3.5s ease-in-out infinite;
+}
+.willow svg .frond:nth-child(odd)  { animation-duration: 3.2s; }
+.willow svg .frond:nth-child(even) { animation-duration: 4.1s; animation-direction: alternate-reverse; }
+
+/* Target fronds inside each willow */
+.willow .frond:nth-child(1) { animation-delay: 0s; }
+.willow .frond:nth-child(2) { animation-delay: 0.3s; }
+.willow .frond:nth-child(3) { animation-delay: 0.6s; }
+.willow .frond:nth-child(4) { animation-delay: 0.9s; }
+.willow .frond:nth-child(5) { animation-delay: 1.2s; }
+.willow .frond:nth-child(6) { animation-delay: 0.15s; }
+.willow .frond:nth-child(7) { animation-delay: 0.75s; }
+
+@keyframes frondSway {
+  0%,100% { transform: skewX(0deg) translateX(0); }
+  33%     { transform: skewX(6deg) translateX(4px); }
+  66%     { transform: skewX(-4deg) translateX(-3px); }
+}
+
+/* ---- Ground / Grass ---- */
+.ground {
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
-  pointer-events: none;
 }
-.ground svg {
+.ground-hills {
   width: 100%;
-  height: 80px;
+  height: 140px;
+  display: block;
+  margin-bottom: -2px;
+}
+.grass-blades {
+  position: absolute;
+  bottom: 58px;
+  left: 0; right: 0;
+  height: 40px;
+  overflow: hidden;
 }
 .grass-strip {
-  background: #7ecb5a;
-  height: 60px;
-  margin-top: -4px;
+  background: #5db832;
+  height: 62px;
+  margin-top: -2px;
+}
+
+/* Mobile grass/willow tweaks */
+@media (max-width: 640px) {
+  .willow { width: clamp(90px, 22vw, 150px); bottom: 50px; }
+  .sun-wrap { width: 64px; height: 64px; }
+  .sun { width: 48px; height: 48px; }
+  .sun-rays { width: 64px; height: 64px; }
 }
 
 /* ============================================================
@@ -117,7 +277,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
    ============================================================ */
 .container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 860px;
   margin: 0 auto;
   padding: var(--space-12) var(--space-6) 160px;

@@ -25,6 +25,44 @@
   }
   for (let i = 0; i < PETAL_COUNT; i++) createPetal();
 
+  /* ---- Grass blades ---- */
+  const grassContainer = document.querySelector('.grass-blades');
+  if (grassContainer) {
+    const bladeStyle = document.createElement('style');
+    bladeStyle.textContent = `
+      .blade {
+        position: absolute;
+        bottom: 0;
+        width: 3px;
+        border-radius: 3px 3px 0 0;
+        transform-origin: bottom center;
+        animation: bladeSway 2.5s ease-in-out infinite;
+      }
+      @keyframes bladeSway {
+        0%,100% { transform: rotate(-8deg); }
+        50%      { transform: rotate(8deg); }
+      }
+    `;
+    document.head.appendChild(bladeStyle);
+
+    const bladeColors = ['#4a9e2a','#5db832','#3a8a1e','#6bc93e','#56b030'];
+    const count = Math.floor(window.innerWidth / 9);
+    for (let i = 0; i < count; i++) {
+      const b = document.createElement('div');
+      b.className = 'blade';
+      const h = 14 + Math.random() * 22;
+      b.style.cssText = `
+        left: ${(i / count) * 100 + (Math.random() - 0.5) * 1.5}%;
+        height: ${h}px;
+        background: ${bladeColors[Math.floor(Math.random() * bladeColors.length)]};
+        animation-delay: ${Math.random() * 2.5}s;
+        animation-duration: ${2 + Math.random() * 1.5}s;
+        animation-direction: ${Math.random() > 0.5 ? 'normal' : 'alternate-reverse'};
+      `;
+      grassContainer.appendChild(b);
+    }
+  }
+
   /* ---- Egg logic ---- */
   const eggWraps  = document.querySelectorAll('.egg-wrap');
   const overlay   = document.getElementById('overlay');

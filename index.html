@@ -18,14 +18,69 @@
   <!-- Floating petals / confetti layer -->
   <div class="petals" aria-hidden="true" id="petals"></div>
 
-  <!-- Grass ground -->
-  <div class="ground" aria-hidden="true">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,40 C120,0 240,80 360,40 C480,0 600,80 720,40 C840,0 960,80 1080,40 C1200,0 1320,80 1440,40 L1440,120 L0,120 Z" fill="#7ecb5a"/>
+  <!-- Full background scene -->
+  <div class="scene" aria-hidden="true">
+
+    <!-- Sky gradient is on body, scene holds fixed elements -->
+
+    <!-- Animated sun -->
+    <div class="sun-wrap">
+      <div class="sun-rays"></div>
+      <div class="sun"></div>
+    </div>
+
+    <!-- Clouds -->
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+
+    <!-- Willow trees -->
+    <svg class="willow willow-left" viewBox="0 0 160 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- trunk -->
+      <rect x="72" y="200" width="16" height="190" rx="8" fill="#5c3d1e"/>
+      <!-- main canopy -->
+      <ellipse cx="80" cy="170" rx="65" ry="90" fill="#2d6a2d"/>
+      <ellipse cx="80" cy="155" rx="50" ry="70" fill="#3a8a3a"/>
+      <!-- willow fronds -->
+      <path class="frond" d="M50 200 Q40 260 35 310" stroke="#4a9e4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M65 215 Q58 275 55 330" stroke="#3a8a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M80 220 Q80 285 78 340" stroke="#4a9e4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M95 215 Q102 275 105 330" stroke="#3a8a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M110 200 Q120 260 125 310" stroke="#4a9e4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M42 185 Q28 250 22 305" stroke="#56b356" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M118 185 Q132 250 138 305" stroke="#56b356" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>
-    <!-- Grass blades -->
-    <div class="grass-strip"></div>
-  </div>
+
+    <svg class="willow willow-right" viewBox="0 0 160 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="72" y="200" width="16" height="190" rx="8" fill="#5c3d1e"/>
+      <ellipse cx="80" cy="175" rx="70" ry="95" fill="#2d6a2d"/>
+      <ellipse cx="80" cy="158" rx="54" ry="74" fill="#3a8a3a"/>
+      <path class="frond" d="M50 200 Q40 260 35 320" stroke="#4a9e4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M65 218 Q58 278 54 338" stroke="#3a8a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M80 222 Q80 288 77 345" stroke="#4a9e4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M95 218 Q102 278 106 338" stroke="#3a8a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M110 200 Q120 260 126 320" stroke="#4a9e4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M40 188 Q26 252 20 310" stroke="#56b356" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="frond" d="M120 188 Q134 252 140 310" stroke="#56b356" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Ground / grass -->
+    <div class="ground">
+      <!-- Rolling hills SVG -->
+      <svg class="ground-hills" viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- back hill (darker) -->
+        <path d="M0,80 C200,20 400,100 600,55 C800,10 1000,90 1200,50 C1340,25 1400,60 1440,55 L1440,140 L0,140 Z" fill="#4a9e2a"/>
+        <!-- front hill -->
+        <path d="M0,100 C120,55 280,110 440,75 C600,40 760,105 920,70 C1080,35 1240,95 1440,65 L1440,140 L0,140 Z" fill="#5db832"/>
+        <!-- grass top shine -->
+        <path d="M0,100 C120,55 280,110 440,75 C600,40 760,105 920,70 C1080,35 1240,95 1440,65" fill="none" stroke="#7ecb5a" stroke-width="3" opacity="0.6"/>
+      </svg>
+      <!-- Animated grass blades -->
+      <div class="grass-blades"></div>
+      <div class="grass-strip"></div>
+    </div>
+
+  </div><!-- /scene -->
 
   <main class="container">
 
